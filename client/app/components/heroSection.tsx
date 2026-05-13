@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Navbar from "./layout/navBar";
+
 
 export default function Hero() {
   return (
     <section className="bg-white flex flex-col overflow-hidden">
 
-      <Navbar />
+   
 
       {/* HERO */}
       <div
