@@ -15,7 +15,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// ── FEATURES DATA ──────────────────────────────────────────
 const features = [
   {
     icon: <Users size={22} strokeWidth={1.8} />,
@@ -39,7 +38,6 @@ const features = [
   },
 ];
 
-// ── SERVICES DATA ──────────────────────────────────────────
 const services = [
   { icon: <ClipboardList size={20} strokeWidth={1.8} />, title: "Plan Manager", href: "https://nswpm.com.au/services/plan-manager-2/", desc: "Managing the NDIS budget on behalf of participants." },
   { icon: <Network size={20} strokeWidth={1.8} />, title: "Support Coordination", href: "https://nswpm.com.au/services/support-coordination/", desc: "Helping participants navigate and connect with NDIS supports." },
@@ -54,15 +52,15 @@ export default function AboutSection() {
   return (
     <div className="bg-white">
 
-      {/* ── SECTION 1: WELCOME / WHO WE ARE ───────────────── */}
-      <section className="px-14 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* ── SECTION 1: WHO WE ARE ── */}
+      <section className="px-6 md:px-10 lg:px-14 py-16 md:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* LEFT — IMAGE STACK */}
-          <div className="relative h-[520px]">
+          {/* IMAGE STACK */}
+          <div className="relative h-[300px] sm:h-[400px] lg:h-[520px]">
 
             {/* MAIN IMAGE */}
-            <div className="absolute top-0 left-0 w-[75%] h-[420px] rounded-3xl overflow-hidden shadow-xl">
+            <div className="absolute top-0 left-0 w-[75%] h-[75%] lg:h-[420px] rounded-3xl overflow-hidden shadow-xl">
               <Image
                 src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=700&q=80"
                 alt="NDIS care professional"
@@ -72,7 +70,7 @@ export default function AboutSection() {
             </div>
 
             {/* SECONDARY IMAGE */}
-            <div className="absolute bottom-0 right-0 w-[55%] h-[280px] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <div className="absolute bottom-0 right-0 w-[52%] h-[52%] lg:h-[280px] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
               <Image
                 src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&q=80"
                 alt="Support worker team"
@@ -82,14 +80,14 @@ export default function AboutSection() {
             </div>
 
             {/* EXPERIENCE BADGE */}
-            <div className="absolute top-6 right-0 bg-[#013877] rounded-2xl px-6 py-5 shadow-xl z-10 flex flex-col items-center">
-              <span className="font-serif text-[48px] text-white leading-none">25</span>
-              <span className="text-[11px] font-bold tracking-[2px] uppercase text-white/60 mt-1">Years Of</span>
-              <span className="text-[11px] font-bold tracking-[2px] uppercase text-[#efc759]">Experience</span>
+            <div className="absolute top-4 right-0 lg:top-6 bg-[#013877] rounded-2xl px-4 py-3 lg:px-6 lg:py-5 shadow-xl z-10 flex flex-col items-center">
+              <span className="font-serif text-[32px] lg:text-[48px] text-white leading-none">25</span>
+              <span className="text-[10px] font-bold tracking-[2px] uppercase text-white/60 mt-1">Years Of</span>
+              <span className="text-[10px] font-bold tracking-[2px] uppercase text-[#efc759]">Experience</span>
             </div>
 
-            {/* ACCENT DOT GRID */}
-            <div className="absolute bottom-16 left-[-16px] grid grid-cols-4 gap-2">
+            {/* DOT GRID — hidden on small screens */}
+            <div className="hidden sm:grid absolute bottom-16 left-[-16px] grid-cols-4 gap-2">
               {Array.from({ length: 16 }).map((_, i) => (
                 <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#6ac7ed]/40" />
               ))}
@@ -97,27 +95,27 @@ export default function AboutSection() {
 
           </div>
 
-          {/* RIGHT — TEXT */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
+          {/* TEXT */}
+          <div className="flex flex-col items-start">
+            <div className="flex items-center gap-3 mb-5">
               <div className="h-[2px] w-8 bg-[#74c6b4]" />
               <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#74c6b4]">
                 Welcome to NSWPM
               </span>
             </div>
 
-            <h2 className="font-serif text-[46px] leading-[1.1] tracking-[-1px] text-[#013877] mb-6">
+            <h2 className="font-serif text-[30px] sm:text-[38px] lg:text-[46px] leading-[1.1] tracking-[-1px] text-[#013877] mb-5">
               NSW Planning Management NDIS Provider
             </h2>
 
-            <p className="text-[15px] font-medium text-[#013877]/60 leading-[1.9] mb-6">
+            <p className="text-[14px] md:text-[15px] font-medium text-[#013877]/60 leading-[1.9] mb-5">
               We are a dedicated NDIS service provider, committed to providing
               exceptional support services for individuals with disabilities. Our aim
               is to create meaningful opportunities and provide personalized care plans
               that help our participants achieve their desired goals and objectives.
             </p>
 
-            <p className="text-[15px] font-medium text-[#013877]/60 leading-[1.9] mb-10">
+            <p className="text-[14px] md:text-[15px] font-medium text-[#013877]/60 leading-[1.9] mb-8">
               Our NDIS support services include Plan Management, Support Coordination,
               Specialist Support Coordination, Supported Independent Living, and much
               more. Our team of professionals are experienced, compassionate, and
@@ -126,7 +124,7 @@ export default function AboutSection() {
 
             <Link
               href="https://nswpm.com.au/about/"
-              className="inline-flex items-center gap-3 bg-[#013877] text-white text-[14px] font-bold px-8 py-4 rounded-xl hover:bg-[#012a5a] transition-colors shadow-lg shadow-[#013877]/20"
+              className="inline-flex items-center gap-3 bg-[#013877] text-white text-[14px] font-bold px-7 py-3.5 rounded-xl hover:bg-[#012a5a] transition-colors shadow-lg shadow-[#013877]/20"
             >
               Learn More About Us
               <ArrowRight size={16} strokeWidth={2.5} />
@@ -136,36 +134,35 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* ── SECTION 2: FEATURE CARDS ───────────────────────── */}
+      {/* ── SECTION 2: FEATURE CARDS ── */}
       <section
-        className="px-14 py-20 relative overflow-hidden"
+        className="px-6 md:px-10 lg:px-14 py-16 md:py-20 relative overflow-hidden"
         style={{ background: "linear-gradient(145deg, #eaf6fd 0%, #e2f4f0 50%, #fdf8ed 100%)" }}
       >
-        {/* BG BLOB */}
         <div className="absolute top-[-80px] right-[-80px] w-[400px] h-[400px] rounded-full bg-[#6ac7ed]/15 blur-3xl" />
 
         <div className="relative z-10">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 lg:mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-[2px] w-8 bg-[#74c6b4]" />
               <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#74c6b4]">Why Choose Us</span>
               <div className="h-[2px] w-8 bg-[#74c6b4]" />
             </div>
-            <h2 className="font-serif text-[42px] leading-[1.1] tracking-[-1px] text-[#013877]">
+            <h2 className="font-serif text-[28px] sm:text-[34px] lg:text-[42px] leading-[1.1] tracking-[-1px] text-[#013877]">
               Dedicated NDIS Service Provider
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {features.map((f, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow border border-[#013877]/5 group"
+                className="bg-white rounded-2xl p-6 lg:p-7 shadow-sm hover:shadow-md transition-shadow border border-[#013877]/5 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#013877]/6 flex items-center justify-center text-[#013877] mb-5 group-hover:bg-[#013877] group-hover:text-white transition-all">
                   {f.icon}
                 </div>
-                <h3 className="text-[16px] font-bold text-[#013877] mb-3">{f.title}</h3>
+                <h3 className="text-[15px] lg:text-[16px] font-bold text-[#013877] mb-3">{f.title}</h3>
                 <p className="text-[13px] font-medium text-[#013877]/55 leading-[1.8]">{f.desc}</p>
               </div>
             ))}
@@ -173,35 +170,35 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* ── SECTION 3: SERVICES ────────────────────────────── */}
-      <section className="px-14 py-24 bg-white">
+      {/* ── SECTION 3: SERVICES ── */}
+      <section className="px-6 md:px-10 lg:px-14 py-16 md:py-20 lg:py-24 bg-white">
 
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 lg:mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#74c6b4]" />
             <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#74c6b4]">What We Offer</span>
             <div className="h-[2px] w-8 bg-[#74c6b4]" />
           </div>
-          <h2 className="font-serif text-[42px] leading-[1.1] tracking-[-1px] text-[#013877] mb-4">
+          <h2 className="font-serif text-[26px] sm:text-[34px] lg:text-[42px] leading-[1.1] tracking-[-1px] text-[#013877] mb-4">
             Plan Management, NDIS Support Coordination
           </h2>
-          <p className="text-[15px] font-medium text-[#013877]/55 max-w-[560px] mx-auto leading-[1.8]">
+          <p className="text-[14px] md:text-[15px] font-medium text-[#013877]/55 max-w-[560px] mx-auto leading-[1.8]">
             We offer a full range of NDIS support services tailored to the unique needs of each individual.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
           {services.map((s, i) => (
             <Link
               key={i}
               href={s.href}
-              className="group border border-[#013877]/8 rounded-2xl p-6 hover:border-[#013877]/20 hover:shadow-lg transition-all bg-white"
+              className="group border border-[#013877]/8 rounded-2xl p-5 lg:p-6 hover:border-[#013877]/20 hover:shadow-lg transition-all bg-white"
             >
-              <div className="w-11 h-11 rounded-xl bg-[#013877]/5 flex items-center justify-center text-[#013877] mb-5 group-hover:bg-[#013877] group-hover:text-white transition-all">
+              <div className="w-11 h-11 rounded-xl bg-[#013877]/5 flex items-center justify-center text-[#013877] mb-4 group-hover:bg-[#013877] group-hover:text-white transition-all">
                 {s.icon}
               </div>
-              <h3 className="text-[15px] font-bold text-[#013877] mb-2">{s.title}</h3>
-              <p className="text-[13px] font-medium text-[#013877]/50 leading-[1.75] mb-5">{s.desc}</p>
+              <h3 className="text-[14px] lg:text-[15px] font-bold text-[#013877] mb-2">{s.title}</h3>
+              <p className="text-[13px] font-medium text-[#013877]/50 leading-[1.75] mb-4">{s.desc}</p>
               <div className="flex items-center gap-2 text-[12px] font-bold text-[#6ac7ed] group-hover:gap-3 transition-all">
                 Learn more <ArrowRight size={14} strokeWidth={2.5} />
               </div>
