@@ -3,211 +3,530 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { ArrowRight, Clock, Wifi } from "lucide-react";
+import {
+  ArrowUpRight,
+  Clock,
+  Wifi,
+  Search,
+  GraduationCap,
+  ChevronRight,
+} from "lucide-react";
 
-const categories = ["All", "Available", "Coming Soon"];
+type Course = {
+  code: string;
+  title: string;
+  desc: string;
+  image: string;
+  status: "Available" | "Coming Soon";
+  accentColor: string;
+  href: string;
+  duration: string;
+  modules: number;
+  level: string;
+};
 
-const courses = [
+const courses: Course[] = [
   {
     code: "NDI",
     title: "NDIS & Disability Sector Training",
     desc: "Core knowledge for support workers and coordinators operating within the NDIS framework.",
-    image: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&q=80",
     status: "Available",
     accentColor: "#74c6b4",
     href: "https://nswpm.com.au/courses/",
+    duration: "6 weeks",
+    modules: 8,
+    level: "Beginner",
   },
   {
     code: "VOC",
     title: "Vocational Skills & Foundation Training",
     desc: "Build the foundational skills needed to thrive in care and community services roles.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80",
     status: "Available",
     accentColor: "#6ac7ed",
     href: "https://nswpm.com.au/courses/",
+    duration: "8 weeks",
+    modules: 10,
+    level: "Beginner",
   },
   {
     code: "HSE",
     title: "Health & Safety Compliance",
     desc: "Stay compliant with HSE standards essential for working safely in care environments.",
-    image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&q=80",
     status: "Available",
     accentColor: "#efc759",
     href: "https://nswpm.com.au/courses/",
+    duration: "4 weeks",
+    modules: 6,
+    level: "Intermediate",
   },
   {
     code: "HCP",
     title: "Healthcare Professional Development",
     desc: "Advanced courses for healthcare professionals looking to upskill and specialise.",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80",
     status: "Coming Soon",
     accentColor: "#013877",
     href: "https://nswpm.com.au/courses/",
+    duration: "12 weeks",
+    modules: 14,
+    level: "Advanced",
   },
   {
     code: "ISO",
     title: "Quality & Standards Compliance",
     desc: "ISO-aligned training for organisations seeking to meet quality management standards.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
     status: "Coming Soon",
     accentColor: "#013877",
     href: "https://nswpm.com.au/courses/",
+    duration: "10 weeks",
+    modules: 12,
+    level: "Advanced",
   },
   {
     code: "BHF",
     title: "Business Health & Financial Management",
     desc: "Tools and frameworks to run a financially healthy care or disability business.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
     status: "Coming Soon",
     accentColor: "#013877",
     href: "https://nswpm.com.au/courses/",
+    duration: "8 weeks",
+    modules: 9,
+    level: "Intermediate",
   },
 ];
 
+const filters = [
+  { label: "All Courses", value: "All" },
+  { label: "Available Now", value: "Available" },
+  { label: "Coming Soon", value: "Coming Soon" },
+] as const;
+
+const levels = ["Beginner", "Intermediate", "Advanced"];
+
 export default function CoursesSection() {
-  const [active, setActive] = useState("All");
+  const [active, setActive] = useState<string>("All");
+  const [hovered, setHovered] = useState<number | null>(null);
 
   const filtered =
     active === "All" ? courses : courses.filter((c) => c.status === active);
 
+  const featured = courses[0];
+
+  const counts = {
+    All: courses.length,
+    Available: courses.filter((c) => c.status === "Available").length,
+    "Coming Soon": courses.filter((c) => c.status === "Coming Soon").length,
+  };
+
   return (
-    <section className="bg-white px-14 py-24">
-
-      {/* HEADER */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-[2px] w-8 bg-[#74c6b4]" />
-            <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#74c6b4]">
-              What We Offer
-            </span>
+    <section className="relative bg-white py-20 lg:py-28 overflow-hidden">
+      {/* TOP HEADER STRIP */}
+      <div className="max-w-[1320px] mx-auto px-6 md:px-10 lg:px-14 mb-12 lg:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="font-mono text-[11px] font-bold tracking-[2px] text-[#013877]/40">
+                [ 03 ]
+              </span>
+              <span className="h-[1px] w-10 bg-[#013877]/20" />
+              <span className="font-mono text-[11px] font-bold tracking-[3px] uppercase text-[#74c6b4]">
+                The Catalogue
+              </span>
+            </div>
+            <h2 className="font-serif text-[36px] sm:text-[48px] lg:text-[64px] leading-[0.98] tracking-[-2px] text-[#013877]">
+              Browse the full{" "}
+              <span className="italic text-[#013877]/55">course</span>{" "}
+              catalogue.
+            </h2>
           </div>
-          <h2 className="font-serif text-[46px] leading-[1.08] tracking-[-1px] text-[#013877] mb-4">
-            Explore our courses
-          </h2>
-          <p className="text-[15px] font-medium text-[#013877]/55 max-w-[480px] leading-[1.8]">
-            From NDIS fundamentals to advanced healthcare practice — find the
-            course that fits your role and schedule.
-          </p>
-        </div>
 
-        {/* FILTER TABS */}
-        <div className="flex items-center gap-2 bg-[#013877]/5 p-1.5 rounded-xl self-start lg:self-end">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`text-[13px] font-bold px-5 py-2.5 rounded-lg transition-all ${
-                active === cat
-                  ? "bg-[#013877] text-white shadow-md"
-                  : "text-[#013877]/50 hover:text-[#013877]"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          <div className="lg:col-span-5 lg:flex lg:justify-end">
+            <div className="flex items-baseline gap-3">
+              <span className="font-serif text-[64px] lg:text-[88px] text-[#013877] leading-none tracking-[-3px]">
+                {String(courses.length).padStart(2, "0")}
+              </span>
+              <div className="flex flex-col">
+                <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/45">
+                  Total
+                </span>
+                <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/45">
+                  Programs
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* CARDS GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-        {filtered.map((course, i) => (
-          <Link
-            key={i}
-            href={course.href}
-            className={`group flex flex-col rounded-2xl overflow-hidden border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 ${
-              course.status === "Coming Soon"
-                ? "border-[#013877]/8 opacity-65"
-                : "border-[#013877]/8"
-            }`}
-          >
-            {/* IMAGE */}
-            <div className="relative h-[200px] overflow-hidden">
-              <Image
-                src={course.image}
-                alt={course.title}
-                fill
-                className={`object-cover object-center transition-transform duration-500 group-hover:scale-105 ${
-                  course.status === "Coming Soon" ? "grayscale" : ""
-                }`}
-              />
-
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#013877]/60 via-transparent to-transparent" />
-
-              {/* STATUS BADGE */}
-              <div className="absolute top-4 left-4">
-                <span
-                  className={`text-[10px] font-bold tracking-[1.5px] uppercase px-3 py-1.5 rounded-full ${
-                    course.status === "Available"
-                      ? "bg-white text-[#0f6e56]"
-                      : "bg-white/80 text-[#013877]/50"
-                  }`}
-                >
-                  {course.status === "Available" ? "Available Now" : "Coming Soon"}
-                </span>
-              </div>
-
-              {/* CODE — bottom of image */}
-              <div className="absolute bottom-4 left-4">
-                <span className="text-[11px] font-bold tracking-[3px] uppercase text-white/60">
-                  {course.code}
-                </span>
-              </div>
-
-              {/* ACCENT BAR */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-[4px]"
-                style={{ background: course.accentColor }}
-              />
-            </div>
-
-            {/* BODY */}
-            <div className="flex flex-col flex-1 p-6 bg-white">
-              <h3 className="text-[17px] font-bold text-[#013877] leading-[1.4] mb-3">
-                {course.title}
-              </h3>
-              <p className="text-[13px] font-medium text-[#013877]/50 leading-[1.75] mb-6 flex-1">
-                {course.desc}
-              </p>
-
-              {/* FOOTER */}
-              <div className="flex items-center justify-between pt-4 border-t border-[#013877]/6">
-                <div className="flex items-center gap-4">
-                  <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#013877]/35">
-                    <Clock size={12} strokeWidth={2} />
-                    Self-paced
-                  </span>
-                  <span className="flex items-center gap-1.5 text-[11px] font-bold text-[#013877]/35">
-                    <Wifi size={12} strokeWidth={2} />
-                    Online
-                  </span>
-                </div>
-                {course.status === "Available" && (
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-white transition-all group-hover:scale-110"
-                    style={{ background: course.accentColor }}
-                  >
-                    <ArrowRight size={14} strokeWidth={2.5} />
-                  </div>
-                )}
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {/* BOTTOM CTA */}
-      <div className="flex justify-center mt-14">
+      {/* FEATURED ROW — wide horizontal card */}
+      <div className="max-w-[1320px] mx-auto px-6 md:px-10 lg:px-14 mb-10 lg:mb-12">
         <Link
-          href="https://nswpm.com.au/courses/"
-          className="flex items-center gap-3 border-2 border-[#013877]/15 text-[#013877] text-[14px] font-bold px-10 py-4 rounded-xl hover:bg-[#013877] hover:text-white hover:border-[#013877] transition-all duration-300"
+          href={featured.href}
+          className="group relative grid grid-cols-1 lg:grid-cols-[1.1fr_1.4fr] gap-0 overflow-hidden rounded-[4px] bg-[#013877] min-h-[320px] lg:min-h-[400px] shadow-xl shadow-[#013877]/15"
         >
-          View All Courses
-          <ArrowRight size={16} strokeWidth={2.5} />
+          {/* IMAGE SIDE */}
+          <div className="relative min-h-[260px] lg:min-h-full overflow-hidden">
+            <Image
+              src={featured.image}
+              alt={featured.title}
+              fill
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#013877]/40 via-transparent to-transparent" />
+
+            {/* TOP LABEL */}
+            <div className="absolute top-5 left-5 flex items-center gap-2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full">
+              <span className="relative flex w-1.5 h-1.5">
+                <span className="absolute inline-flex w-full h-full rounded-full bg-[#74c6b4] opacity-75 animate-ping" />
+                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-[#74c6b4]" />
+              </span>
+              <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-[#013877]">
+                Featured · Now Enrolling
+              </span>
+            </div>
+
+            {/* BOTTOM CODE */}
+            <div className="absolute bottom-5 left-5 flex items-center gap-3">
+              <span className="font-serif text-[44px] text-white leading-none">
+                {featured.code}
+              </span>
+              <div className="flex flex-col">
+                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-white/60">
+                  Course
+                </span>
+                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-white/60">
+                  Code
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* CONTENT SIDE */}
+          <div className="relative flex flex-col justify-between p-7 lg:p-10 text-white">
+            {/* PATTERN OVERLAY */}
+            <div
+              className="absolute inset-0 opacity-[0.05] pointer-events-none"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }}
+            />
+
+            <div className="relative">
+              <span className="font-mono text-[10px] font-bold tracking-[3px] uppercase text-[#efc759] block mb-4">
+                / Pick of the season
+              </span>
+              <h3 className="font-serif text-[28px] lg:text-[38px] leading-[1.05] tracking-[-1px] mb-4">
+                {featured.title}
+              </h3>
+              <p className="text-[14px] lg:text-[15px] font-medium text-white/65 leading-[1.8] max-w-[480px]">
+                {featured.desc}
+              </p>
+            </div>
+
+            <div className="relative mt-8 flex items-end justify-between gap-4 flex-wrap">
+              {/* META PILLS */}
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="flex items-center gap-1.5 bg-white/10 ring-1 ring-white/15 px-3 py-1.5 rounded-full text-[11px] font-bold text-white/80">
+                  <Clock size={11} strokeWidth={2} />
+                  {featured.duration}
+                </span>
+                <span className="flex items-center gap-1.5 bg-white/10 ring-1 ring-white/15 px-3 py-1.5 rounded-full text-[11px] font-bold text-white/80">
+                  <GraduationCap size={11} strokeWidth={2} />
+                  {featured.modules} modules
+                </span>
+                <span className="flex items-center gap-1.5 bg-white/10 ring-1 ring-white/15 px-3 py-1.5 rounded-full text-[11px] font-bold text-white/80">
+                  {featured.level}
+                </span>
+              </div>
+
+              {/* CTA */}
+              <span className="inline-flex items-center gap-2 bg-[#efc759] text-[#013877] text-[12px] font-bold tracking-[1px] uppercase px-5 py-3 rounded-xl group-hover:gap-3 transition-all">
+                Start Now
+                <ArrowUpRight
+                  size={14}
+                  strokeWidth={2.5}
+                  className="group-hover:rotate-45 transition-transform"
+                />
+              </span>
+            </div>
+          </div>
         </Link>
       </div>
 
+      {/* MAIN CATALOGUE — sidebar + list */}
+      <div className="max-w-[1320px] mx-auto px-6 md:px-10 lg:px-14">
+        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8 lg:gap-12">
+          {/* ===== SIDEBAR ===== */}
+          <aside className="lg:sticky lg:top-8 lg:self-start space-y-8">
+            {/* SEARCH BOX */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search courses…"
+                className="w-full bg-[#eaf6fd]/50 ring-1 ring-[#013877]/10 focus:ring-[#013877]/30 outline-none rounded-xl px-4 py-3 pl-10 text-[13px] font-medium text-[#013877] placeholder:text-[#013877]/35 transition-all"
+              />
+              <Search
+                size={14}
+                strokeWidth={2}
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#013877]/40"
+              />
+            </div>
+
+            {/* STATUS FILTER */}
+            <div>
+              <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/40 block mb-3">
+                / Status
+              </span>
+              <div className="flex flex-col">
+                {filters.map((f) => (
+                  <button
+                    key={f.value}
+                    onClick={() => setActive(f.value)}
+                    className={`group flex items-center justify-between py-2.5 border-b border-[#013877]/8 last:border-0 transition-all ${
+                      active === f.value
+                        ? "text-[#013877]"
+                        : "text-[#013877]/55 hover:text-[#013877]"
+                    }`}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                          active === f.value
+                            ? "bg-[#efc759]"
+                            : "bg-[#013877]/15 group-hover:bg-[#013877]/40"
+                        }`}
+                      />
+                      <span className="text-[13px] font-bold tracking-[0.5px]">
+                        {f.label}
+                      </span>
+                    </span>
+                    <span className="font-mono text-[10px] font-bold tracking-[1px] text-[#013877]/35 tabular-nums">
+                      {String(counts[f.value as keyof typeof counts]).padStart(
+                        2,
+                        "0"
+                      )}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* LEVELS FILTER */}
+            <div>
+              <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/40 block mb-3">
+                / Level
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {levels.map((lv) => (
+                  <span
+                    key={lv}
+                    className="text-[11px] font-bold tracking-[0.5px] text-[#013877]/65 px-3 py-1.5 rounded-full ring-1 ring-[#013877]/10 hover:ring-[#013877]/30 hover:bg-[#013877]/5 cursor-pointer transition-all"
+                  >
+                    {lv}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* HELP CARD */}
+            <div className="relative rounded-2xl bg-[#013877] p-5 text-white overflow-hidden">
+              <div
+                className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                  backgroundSize: "24px 24px",
+                }}
+              />
+              <div className="relative">
+                <div className="w-9 h-9 rounded-lg bg-[#efc759] flex items-center justify-center mb-4">
+                  <GraduationCap
+                    size={16}
+                    strokeWidth={2.2}
+                    className="text-[#013877]"
+                  />
+                </div>
+                <h4 className="font-serif text-[18px] leading-tight mb-1.5">
+                  Not sure where to start?
+                </h4>
+                <p className="text-[12px] text-white/65 leading-[1.6] mb-4">
+                  Our advisors will help you match the right course to your
+                  goals.
+                </p>
+                <Link
+                  href="https://nswpm.com.au/contact/"
+                  className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#efc759] hover:gap-2.5 transition-all"
+                >
+                  Book a call <ArrowUpRight size={12} strokeWidth={2.5} />
+                </Link>
+              </div>
+            </div>
+          </aside>
+
+          {/* ===== COURSE LIST ===== */}
+          <div>
+            {/* RESULTS COUNT BAR */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#013877]/10">
+              <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/45">
+                Showing{" "}
+                <span className="text-[#013877]">
+                  {String(filtered.length).padStart(2, "0")}
+                </span>{" "}
+                of{" "}
+                <span className="text-[#013877]">
+                  {String(courses.length).padStart(2, "0")}
+                </span>{" "}
+                courses
+              </span>
+              <span className="hidden sm:flex items-center gap-2 font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/45">
+                Sorted by · Newest
+              </span>
+            </div>
+
+            {/* COURSE ROWS — list layout */}
+            <div className="flex flex-col">
+              {filtered.map((course, i) => {
+                const isAvailable = course.status === "Available";
+                return (
+                  <Link
+                    key={i}
+                    href={course.href}
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(null)}
+                    className={`group relative grid grid-cols-[80px_1fr_auto] sm:grid-cols-[120px_1fr_auto] gap-4 sm:gap-6 items-center py-5 sm:py-6 border-b border-[#013877]/10 transition-all ${
+                      !isAvailable ? "opacity-60 hover:opacity-90" : ""
+                    } hover:pl-3`}
+                  >
+                    {/* ACTIVE INDICATOR BAR */}
+                    <span
+                      className="absolute left-0 top-0 bottom-0 w-[3px] scale-y-0 group-hover:scale-y-100 origin-center transition-transform"
+                      style={{ background: course.accentColor }}
+                    />
+
+                    {/* THUMBNAIL */}
+                    <div className="relative aspect-[4/3] sm:aspect-square w-full rounded-[4px] overflow-hidden ring-1 ring-[#013877]/10">
+                      <Image
+                        src={course.image}
+                        alt={course.title}
+                        fill
+                        className={`object-cover object-center transition-transform duration-500 group-hover:scale-110 ${
+                          !isAvailable ? "grayscale" : ""
+                        }`}
+                      />
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-[3px]"
+                        style={{ background: course.accentColor }}
+                      />
+                    </div>
+
+                    {/* CONTENT */}
+                    <div className="min-w-0">
+                      {/* META ROW */}
+                      <div className="flex items-center gap-3 mb-2 flex-wrap">
+                        <span
+                          className="font-mono text-[10px] font-bold tracking-[2.5px] uppercase"
+                          style={{ color: course.accentColor }}
+                        >
+                          / {course.code}
+                        </span>
+                        <span className="w-1 h-1 rounded-full bg-[#013877]/20" />
+                        <span className="font-mono text-[10px] font-bold tracking-[1.5px] uppercase text-[#013877]/40">
+                          {course.level}
+                        </span>
+                        <span className="w-1 h-1 rounded-full bg-[#013877]/20" />
+                        <span
+                          className={`font-mono text-[10px] font-bold tracking-[1.5px] uppercase ${
+                            isAvailable
+                              ? "text-[#5ab39e]"
+                              : "text-[#013877]/40"
+                          }`}
+                        >
+                          {isAvailable ? "Available" : "Coming Soon"}
+                        </span>
+                      </div>
+
+                      {/* TITLE */}
+                      <h3 className="font-serif text-[20px] sm:text-[24px] lg:text-[28px] text-[#013877] leading-[1.1] tracking-[-0.5px] mb-2 transition-colors">
+                        {course.title}
+                      </h3>
+
+                      {/* DESCRIPTION — hidden on mobile, shows on hover/desktop */}
+                      <p className="hidden sm:block text-[13px] font-medium text-[#013877]/55 leading-[1.7] mb-3 max-w-[540px]">
+                        {course.desc}
+                      </p>
+
+                      {/* INLINE STATS */}
+                      <div className="flex items-center gap-4 text-[11px] font-bold text-[#013877]/45">
+                        <span className="flex items-center gap-1.5">
+                          <Clock size={11} strokeWidth={2} />
+                          {course.duration}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <GraduationCap size={11} strokeWidth={2} />
+                          {course.modules} modules
+                        </span>
+                        <span className="hidden sm:flex items-center gap-1.5">
+                          <Wifi size={11} strokeWidth={2} />
+                          Online
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* RIGHT — ARROW CHIP */}
+                    <div className="flex items-center">
+                      <span
+                        className={`hidden sm:flex w-12 h-12 rounded-full items-center justify-center transition-all ${
+                          hovered === i && isAvailable
+                            ? "scale-110"
+                            : ""
+                        } ${
+                          isAvailable
+                            ? "bg-[#013877] text-white group-hover:bg-[#efc759] group-hover:text-[#013877]"
+                            : "bg-[#013877]/5 text-[#013877]/40"
+                        }`}
+                      >
+                        <ChevronRight size={18} strokeWidth={2.2} />
+                      </span>
+                      <span className="sm:hidden text-[#013877]/40">
+                        <ChevronRight size={20} strokeWidth={2} />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* FOOTER BAR */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-10 pt-6">
+              <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/40">
+                End of catalogue · Updated weekly
+              </span>
+              <Link
+                href="https://nswpm.com.au/courses/"
+                className="group inline-flex items-center justify-between gap-4 bg-[#013877] text-white text-[12px] font-bold tracking-[1.5px] uppercase px-6 py-3.5 rounded-xl hover:bg-[#012a5a] transition-all"
+              >
+                Download Full Brochure
+                <span className="w-6 h-6 rounded-full bg-[#efc759] flex items-center justify-center text-[#013877] group-hover:rotate-45 transition-transform">
+                  <ArrowUpRight size={12} strokeWidth={2.5} />
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
