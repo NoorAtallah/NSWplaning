@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* ── NSWPM ACADEMY BRAND TOKENS ──
+   Change a colour here and it updates everywhere it is used.
+   Usage: bg-brand, text-gold, border-brand/10, hover:bg-brand-dark ... */
+@theme {
+  --color-brand: #013877;      /* primary navy */
+  --color-brand-dark: #012a5a; /* navy, hover/pressed */
+  --color-gold: #efc759;       /* accent — CTAs, highlights */
+  --color-mint: #74c6b4;       /* accent — secondary */
+  --color-mint-dark: #5ab39e;
+  --color-sky: #6ac7ed;        /* accent — tertiary */
+  --color-ice: #eaf6fd;        /* tinted surface */
+  --color-mist: #e2f4f0;       /* tinted surface */
+  --color-sand: #fdf8ed;       /* tinted surface */
+  --color-cloud: #f7fafc;      /* tinted surface */
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

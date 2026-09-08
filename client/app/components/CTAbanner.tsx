@@ -38,7 +38,7 @@ export default function CTABanner() {
   return (
     <section className="bg-white px-4 sm:px-8 lg:px-14 py-12 lg:py-16">
       {/* MARQUEE STRIP — above the ticket */}
-      <div className="max-w-[1280px] mx-auto mb-6 overflow-hidden border-y border-[#013877]/10 py-3">
+      <div className="max-w-[1280px] mx-auto mb-6 overflow-hidden border-y border-brand/10 py-3">
         <div className="flex items-center gap-10 animate-[scroll_35s_linear_infinite] whitespace-nowrap">
           {[...Array(3)].map((_, dupe) => (
             <div key={dupe} className="flex items-center gap-10 shrink-0">
@@ -55,9 +55,9 @@ export default function CTABanner() {
                   <Sparkles
                     size={12}
                     strokeWidth={2}
-                    className="text-[#efc759]"
+                    className="text-gold"
                   />
-                  <span className="font-mono text-[11px] font-bold tracking-[2.5px] uppercase text-[#013877]/55">
+                  <span className="font-mono text-[11px] font-bold tracking-[2.5px] uppercase text-brand/55">
                     {txt}
                   </span>
                 </div>
@@ -70,9 +70,9 @@ export default function CTABanner() {
       {/* TICKET CONTAINER */}
       <div className="relative max-w-[1280px] mx-auto">
         {/* TICKET — split panel layout */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-[420px_1fr_220px] overflow-hidden rounded-[20px] bg-white shadow-2xl shadow-[#013877]/15 ring-1 ring-[#013877]/8 min-h-[460px]">
+        <div className="relative grid grid-cols-1 lg:grid-cols-[420px_1fr_220px] overflow-hidden rounded-[20px] bg-white shadow-2xl shadow-brand/15 ring-1 ring-brand/8 min-h-[460px]">
           {/* ============== LEFT PANEL — PHOTO ============== */}
-          <div className="relative bg-[#013877] overflow-hidden min-h-[280px] lg:min-h-full">
+          <div className="relative bg-brand overflow-hidden min-h-[280px] lg:min-h-full">
             {/* GRID TEXTURE */}
             <div
               className="absolute inset-0 opacity-[0.08] pointer-events-none"
@@ -99,31 +99,31 @@ export default function CTABanner() {
                 className="object-cover object-top"
               />
               {/* GRADIENT WASH */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#013877] via-[#013877]/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#013877]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand via-brand/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-brand/60" />
             </div>
 
             {/* TOP CORNER — FIG LABEL */}
             <div className="absolute top-5 left-5 z-10 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-2.5 py-1.5 rounded-full">
               <span className="relative flex w-1.5 h-1.5">
-                <span className="absolute inline-flex w-full h-full rounded-full bg-[#74c6b4] opacity-75 animate-ping" />
-                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-[#74c6b4]" />
+                <span className="absolute inline-flex w-full h-full rounded-full bg-mint opacity-75 animate-ping" />
+                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-mint" />
               </span>
-              <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-[#013877]">
+              <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-brand">
                 Live · Enrolling
               </span>
             </div>
 
             {/* TOP RIGHT — TILTED STAMP */}
             <div className="absolute top-5 right-5 z-10 rotate-[12deg]">
-              <div className="relative w-[78px] h-[78px] rounded-full bg-[#efc759] flex flex-col items-center justify-center shadow-lg">
-                <span className="font-serif text-[22px] text-[#013877] leading-none">
+              <div className="relative w-[78px] h-[78px] rounded-full bg-gold flex flex-col items-center justify-center shadow-lg">
+                <span className="font-serif text-[22px] text-brand leading-none">
                   25
                 </span>
-                <span className="font-mono text-[7px] font-bold tracking-[1.5px] uppercase text-[#013877]/75 mt-0.5">
+                <span className="font-mono text-[7px] font-bold tracking-[1.5px] uppercase text-brand/75 mt-0.5">
                   Years
                 </span>
-                <span className="absolute inset-0 rounded-full border-[1.5px] border-dashed border-[#013877]/25 scale-[0.86]" />
+                <span className="absolute inset-0 rounded-full border-[1.5px] border-dashed border-brand/25 scale-[0.86]" />
               </div>
             </div>
 
@@ -145,26 +145,26 @@ export default function CTABanner() {
           </div>
 
           {/* ============== PERFORATION (vertical dashed line) ============== */}
-          <div className="hidden lg:block absolute left-[420px] top-8 bottom-8 w-px border-l-2 border-dashed border-[#013877]/12 z-10" />
+          <div className="hidden lg:block absolute left-[420px] top-8 bottom-8 w-px border-l-2 border-dashed border-brand/12 z-10" />
 
           {/* TICKET PUNCH HOLES — top & bottom of perforation */}
-          <div className="hidden lg:block absolute left-[420px] -translate-x-1/2 -top-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-[#013877]/8 z-10" />
-          <div className="hidden lg:block absolute left-[420px] -translate-x-1/2 -bottom-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-[#013877]/8 z-10" />
+          <div className="hidden lg:block absolute left-[420px] -translate-x-1/2 -top-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-brand/8 z-10" />
+          <div className="hidden lg:block absolute left-[420px] -translate-x-1/2 -bottom-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-brand/8 z-10" />
 
           {/* ============== MIDDLE PANEL — CONTENT ============== */}
           <div className="relative flex flex-col justify-between p-7 lg:p-10 bg-white">
             {/* TOP META */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] font-bold tracking-[2px] text-[#013877]/40">
+                <span className="font-mono text-[10px] font-bold tracking-[2px] text-brand/40">
                   REF
                 </span>
-                <span className="font-mono text-[11px] font-bold tracking-[1.5px] text-[#013877]">
+                <span className="font-mono text-[11px] font-bold tracking-[1.5px] text-brand">
                   NSW-2025-CR
                 </span>
               </div>
-              <div className="hidden sm:flex items-center gap-2 text-[#013877]/60">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#efc759]" />
+              <div className="hidden sm:flex items-center gap-2 text-brand/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
                 <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase">
                   NDIS Registered
                 </span>
@@ -173,14 +173,14 @@ export default function CTABanner() {
 
             {/* MAIN HEADLINE */}
             <div className="mb-7">
-              <span className="font-mono text-[10px] font-bold tracking-[3px] uppercase text-[#74c6b4] block mb-3">
+              <span className="font-mono text-[10px] font-bold tracking-[3px] uppercase text-mint block mb-3">
                 / Next intake — opening now
               </span>
-              <h2 className="font-serif text-[34px] sm:text-[42px] lg:text-[50px] leading-[1] tracking-[-1.5px] text-[#013877]">
+              <h2 className="font-serif text-[34px] sm:text-[42px] lg:text-[50px] leading-[1] tracking-[-1.5px] text-brand">
                 Take the next step in your{" "}
-                <span className="italic text-[#013877]/70">career</span>.
+                <span className="italic text-brand/70">career</span>.
               </h2>
-              <p className="text-[14px] lg:text-[15px] font-medium text-[#013877]/55 leading-[1.75] mt-4 max-w-[480px]">
+              <p className="text-[14px] lg:text-[15px] font-medium text-brand/55 leading-[1.75] mt-4 max-w-[480px]">
                 Nationally recognised, fully online courses for support workers
                 and healthcare professionals across Australia.
               </p>
@@ -189,25 +189,25 @@ export default function CTABanner() {
             {/* ACTIONS ROW */}
             <div className="flex flex-col sm:flex-row sm:items-stretch gap-3 mb-6">
               <Link
-                href="https://nswpm.com.au/contact/"
-                className="group relative flex items-center justify-between gap-3 bg-[#013877] text-white text-[13px] font-bold tracking-[1px] uppercase px-6 py-4 rounded-xl hover:bg-[#012a5a] transition-all shadow-lg shadow-[#013877]/20 hover:shadow-xl hover:-translate-y-0.5 overflow-hidden"
+                href="/contact"
+                className="group relative flex items-center justify-between gap-3 bg-brand text-white text-[13px] font-bold tracking-[1px] uppercase px-6 py-4 rounded-xl hover:bg-brand-dark transition-all shadow-lg shadow-brand/20 hover:shadow-xl hover:-translate-y-0.5 overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <Calendar size={15} strokeWidth={2.5} />
                   Enquire Now
                 </span>
-                <span className="relative z-10 w-7 h-7 rounded-full bg-[#efc759] flex items-center justify-center text-[#013877] group-hover:rotate-45 transition-transform">
+                <span className="relative z-10 w-7 h-7 rounded-full bg-gold flex items-center justify-center text-brand group-hover:rotate-45 transition-transform">
                   <ArrowUpRight size={13} strokeWidth={2.5} />
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               </Link>
 
               <Link
-                href="https://nswpm.com.au/courses/"
-                className="group flex items-center justify-between gap-3 bg-white text-[#013877] text-[13px] font-bold tracking-[1px] uppercase px-6 py-4 rounded-xl ring-1 ring-[#013877]/15 hover:ring-[#013877]/40 transition-all"
+                href="/courses"
+                className="group flex items-center justify-between gap-3 bg-white text-brand text-[13px] font-bold tracking-[1px] uppercase px-6 py-4 rounded-xl ring-1 ring-brand/15 hover:ring-brand/40 transition-all"
               >
                 Browse Courses
-                <span className="w-7 h-7 rounded-full bg-[#013877]/5 flex items-center justify-center text-[10px] group-hover:bg-[#efc759] transition-colors">
+                <span className="w-7 h-7 rounded-full bg-brand/5 flex items-center justify-center text-[10px] group-hover:bg-gold transition-colors">
                   →
                 </span>
               </Link>
@@ -215,16 +215,16 @@ export default function CTABanner() {
               {/* PHONE QUICK LINK */}
               <a
                 href="tel:+61000000000"
-                className="hidden sm:flex items-center justify-center gap-2 text-[#013877]/70 hover:text-[#013877] transition-colors px-4 group"
+                className="hidden sm:flex items-center justify-center gap-2 text-brand/70 hover:text-brand transition-colors px-4 group"
               >
-                <div className="w-10 h-10 rounded-full ring-1 ring-[#013877]/15 flex items-center justify-center group-hover:ring-[#013877]/40 group-hover:bg-[#eaf6fd] transition-all">
+                <div className="w-10 h-10 rounded-full ring-1 ring-brand/15 flex items-center justify-center group-hover:ring-brand/40 group-hover:bg-ice transition-all">
                   <Phone size={14} strokeWidth={2.2} />
                 </div>
                 <div className="flex flex-col items-start">
-                  <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-[#013877]/40 leading-none">
+                  <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-brand/40 leading-none">
                     Or call
                   </span>
-                  <span className="font-mono text-[12px] font-bold text-[#013877] leading-none mt-1">
+                  <span className="font-mono text-[12px] font-bold text-brand leading-none mt-1">
                     (02) 0000
                   </span>
                 </div>
@@ -232,9 +232,9 @@ export default function CTABanner() {
             </div>
 
             {/* PERSON SELECTOR — bottom row */}
-            <div className="flex items-center justify-between pt-5 border-t border-[#013877]/10">
+            <div className="flex items-center justify-between pt-5 border-t border-brand/10">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/40">
+                <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-brand/40">
                   Meet our
                 </span>
                 <div className="flex gap-2">
@@ -245,8 +245,8 @@ export default function CTABanner() {
                       suppressHydrationWarning
                       className={`relative w-9 h-9 rounded-full overflow-hidden transition-all ${
                         i === current
-                          ? "ring-2 ring-[#efc759] ring-offset-2 ring-offset-white scale-110"
-                          : "ring-1 ring-[#013877]/20 hover:ring-[#013877]/50 opacity-60 hover:opacity-100"
+                          ? "ring-2 ring-gold ring-offset-2 ring-offset-white scale-110"
+                          : "ring-1 ring-brand/20 hover:ring-brand/50 opacity-60 hover:opacity-100"
                       }`}
                     >
                       <Image
@@ -267,8 +267,8 @@ export default function CTABanner() {
                     key={i}
                     className={`rounded-full transition-all duration-300 ${
                       i === current
-                        ? "w-6 h-1.5 bg-[#013877]"
-                        : "w-1.5 h-1.5 bg-[#013877]/15"
+                        ? "w-6 h-1.5 bg-brand"
+                        : "w-1.5 h-1.5 bg-brand/15"
                     }`}
                   />
                 ))}
@@ -277,9 +277,9 @@ export default function CTABanner() {
           </div>
 
           {/* ============== PERFORATION between middle & right ============== */}
-          <div className="hidden lg:block absolute right-[220px] top-8 bottom-8 w-px border-l-2 border-dashed border-[#013877]/12 z-10" />
-          <div className="hidden lg:block absolute right-[220px] translate-x-1/2 -top-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-[#013877]/8 z-10" />
-          <div className="hidden lg:block absolute right-[220px] translate-x-1/2 -bottom-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-[#013877]/8 z-10" />
+          <div className="hidden lg:block absolute right-[220px] top-8 bottom-8 w-px border-l-2 border-dashed border-brand/12 z-10" />
+          <div className="hidden lg:block absolute right-[220px] translate-x-1/2 -top-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-brand/8 z-10" />
+          <div className="hidden lg:block absolute right-[220px] translate-x-1/2 -bottom-3 w-6 h-6 rounded-full bg-white shadow-inner ring-1 ring-brand/8 z-10" />
 
           {/* ============== RIGHT STUB — STATS ============== */}
           <div
@@ -291,10 +291,10 @@ export default function CTABanner() {
           >
             {/* HEADER */}
             <div>
-              <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/45 block mb-1">
+              <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-brand/45 block mb-1">
                 The numbers
               </span>
-              <span className="font-serif italic text-[16px] text-[#013877]/70">
+              <span className="font-serif italic text-[16px] text-brand/70">
                 at a glance
               </span>
             </div>
@@ -303,46 +303,46 @@ export default function CTABanner() {
             <div className="flex flex-col gap-5 py-5">
               <div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="font-serif text-[40px] text-[#013877] leading-none">
+                  <span className="font-serif text-[40px] text-brand leading-none">
                     25
                   </span>
-                  <span className="font-serif text-[20px] text-[#efc759] leading-none">
+                  <span className="font-serif text-[20px] text-gold leading-none">
                     +
                   </span>
                 </div>
-                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-[#013877]/45 mt-1.5 block">
+                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-brand/45 mt-1.5 block">
                   Years experience
                 </span>
               </div>
 
-              <div className="h-px bg-[#013877]/8" />
+              <div className="h-px bg-brand/8" />
 
               <div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="font-serif text-[40px] text-[#013877] leading-none">
+                  <span className="font-serif text-[40px] text-brand leading-none">
                     500
                   </span>
-                  <span className="font-serif text-[20px] text-[#74c6b4] leading-none">
+                  <span className="font-serif text-[20px] text-mint leading-none">
                     +
                   </span>
                 </div>
-                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-[#013877]/45 mt-1.5 block">
+                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-brand/45 mt-1.5 block">
                   Graduates
                 </span>
               </div>
 
-              <div className="h-px bg-[#013877]/8" />
+              <div className="h-px bg-brand/8" />
 
               <div>
                 <div className="flex items-baseline gap-1.5">
-                  <span className="font-serif text-[40px] text-[#013877] leading-none">
+                  <span className="font-serif text-[40px] text-brand leading-none">
                     100
                   </span>
-                  <span className="font-serif text-[20px] text-[#6ac7ed] leading-none">
+                  <span className="font-serif text-[20px] text-sky leading-none">
                     %
                   </span>
                 </div>
-                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-[#013877]/45 mt-1.5 block">
+                <span className="font-mono text-[9px] font-bold tracking-[2px] uppercase text-brand/45 mt-1.5 block">
                   Fully online
                 </span>
               </div>
@@ -354,7 +354,7 @@ export default function CTABanner() {
                 (h, i) => (
                   <span
                     key={i}
-                    className="w-[2px] bg-[#013877]"
+                    className="w-[2px] bg-brand"
                     style={{ height: `${h * 4}px` }}
                   />
                 )
@@ -365,26 +365,26 @@ export default function CTABanner() {
           {/* MOBILE STATS — only visible below lg */}
           <div className="lg:hidden grid grid-cols-3 px-7 pb-7 -mt-2 gap-4">
             <div className="text-left">
-              <div className="font-serif text-[26px] text-[#013877] leading-none">
-                25<span className="text-[#efc759]">+</span>
+              <div className="font-serif text-[26px] text-brand leading-none">
+                25<span className="text-gold">+</span>
               </div>
-              <div className="font-mono text-[9px] font-bold tracking-[1.5px] uppercase text-[#013877]/45 mt-1.5">
+              <div className="font-mono text-[9px] font-bold tracking-[1.5px] uppercase text-brand/45 mt-1.5">
                 Years
               </div>
             </div>
-            <div className="text-left border-l border-[#013877]/10 pl-4">
-              <div className="font-serif text-[26px] text-[#013877] leading-none">
-                500<span className="text-[#74c6b4]">+</span>
+            <div className="text-left border-l border-brand/10 pl-4">
+              <div className="font-serif text-[26px] text-brand leading-none">
+                500<span className="text-mint">+</span>
               </div>
-              <div className="font-mono text-[9px] font-bold tracking-[1.5px] uppercase text-[#013877]/45 mt-1.5">
+              <div className="font-mono text-[9px] font-bold tracking-[1.5px] uppercase text-brand/45 mt-1.5">
                 Graduates
               </div>
             </div>
-            <div className="text-left border-l border-[#013877]/10 pl-4">
-              <div className="font-serif text-[26px] text-[#013877] leading-none">
-                100<span className="text-[#6ac7ed]">%</span>
+            <div className="text-left border-l border-brand/10 pl-4">
+              <div className="font-serif text-[26px] text-brand leading-none">
+                100<span className="text-sky">%</span>
               </div>
-              <div className="font-mono text-[9px] font-bold tracking-[1.5px] uppercase text-[#013877]/45 mt-1.5">
+              <div className="font-mono text-[9px] font-bold tracking-[1.5px] uppercase text-brand/45 mt-1.5">
                 Online
               </div>
             </div>
@@ -394,14 +394,14 @@ export default function CTABanner() {
         {/* BOTTOM CAPTION ROW */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mt-6 px-2">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/40">
+            <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-brand/40">
               Issued by
             </span>
-            <span className="font-serif italic text-[14px] text-[#013877]">
+            <span className="font-serif italic text-[14px] text-brand">
               NSWPM Care Academy
             </span>
           </div>
-          <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-[#013877]/40">
+          <span className="font-mono text-[10px] font-bold tracking-[2px] uppercase text-brand/40">
             Bankstown · NSW · EST 2019
           </span>
         </div>

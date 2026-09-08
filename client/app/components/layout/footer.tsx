@@ -1,23 +1,24 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 
+// TODO: these are the parent NDIS provider's services, not Academy courses.
+// Confirm with the client whether the footer should link to course categories instead.
 const services = [
-  { label: "Plan Manager", href: "https://nswpm.com.au/services/plan-manager-2/" },
-  { label: "Support Coordination", href: "https://nswpm.com.au/services/support-coordination/" },
-  { label: "Personal Care", href: "https://nswpm.com.au/services/personal-care-2/" },
-  { label: "Social Community", href: "https://nswpm.com.au/services/social-community-2/" },
-  { label: "Mental Care", href: "https://nswpm.com.au/services/mental-care/" },
-  { label: "Behavioural Support", href: "https://nswpm.com.au/services/behavioural-support/" },
-  { label: "Aged Care", href: "https://nswpm.com.au/services/aged-care/" },
+  { label: "NDIS & Disability Sector Training", href: "/courses" },
+  { label: "Vocational Skills & Foundation Training", href: "/courses" },
+  { label: "Health & Safety Compliance", href: "/courses" },
+  { label: "Healthcare Professional Development", href: "/courses" },
+  { label: "Quality & Standards Compliance", href: "/courses" },
+  { label: "Business Health & Financial Management", href: "/courses" },
 ];
 
 const quickLinks = [
-  { label: "Home", href: "https://nswpm.com.au/" },
-  { label: "About Us", href: "https://nswpm.com.au/about/" },
-  { label: "Services", href: "https://nswpm.com.au/services-style-1/" },
-  { label: "NDIS", href: "https://nswpm.com.au/ndis-services/" },
-  { label: "Courses", href: "https://nswpm.com.au/courses/" },
-  { label: "Contact", href: "https://nswpm.com.au/contact/" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Courses", href: "/courses" }, // TODO: page not built yet
+  { label: "For Organisations", href: "/organisations" }, // TODO: page not built yet
+  { label: "Learner Portal", href: "#" }, // TODO: eSkilled LMS URL
+  { label: "Contact", href: "/contact" },
 ];
 
 const socials = [
@@ -56,7 +57,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#013877]">
+    <footer className="bg-brand">
 
       {/* WAVE TOP */}
       <div className="overflow-hidden leading-none">
@@ -74,7 +75,7 @@ export default function Footer() {
             <div className="font-serif text-[24px] text-white mb-2">
               NSWPM Academy
             </div>
-            <div className="h-[2px] w-10 bg-[#efc759] mb-5" />
+            <div className="h-[2px] w-10 bg-gold mb-5" />
             <p className="text-[13px] font-medium text-white/55 leading-[1.85] mb-8">
               A dedicated NDIS service provider committed to delivering
               exceptional support services and nationally recognised training
@@ -108,7 +109,7 @@ export default function Footer() {
                     href={link.href}
                     className="flex items-center gap-2 text-[13px] font-medium text-white/55 hover:text-white hover:gap-3 transition-all"
                   >
-                    <ArrowRight size={12} strokeWidth={2.5} className="text-[#74c6b4] shrink-0" />
+                    <ArrowRight size={12} strokeWidth={2.5} className="text-mint shrink-0" />
                     {link.label}
                   </Link>
                 </li>
@@ -119,7 +120,7 @@ export default function Footer() {
           {/* COL 3 — SERVICES */}
           <div>
             <h4 className="text-[13px] font-bold tracking-[2px] uppercase text-white mb-6">
-              Our Services
+              Our Courses
             </h4>
             <ul className="flex flex-col gap-3">
               {services.map((s) => (
@@ -128,7 +129,7 @@ export default function Footer() {
                     href={s.href}
                     className="flex items-center gap-2 text-[13px] font-medium text-white/55 hover:text-white hover:gap-3 transition-all"
                   >
-                    <ArrowRight size={12} strokeWidth={2.5} className="text-[#6ac7ed] shrink-0" />
+                    <ArrowRight size={12} strokeWidth={2.5} className="text-sky shrink-0" />
                     {s.label}
                   </Link>
                 </li>
@@ -145,7 +146,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-4 mb-8">
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin size={14} strokeWidth={1.8} className="text-[#74c6b4]" />
+                  <MapPin size={14} strokeWidth={1.8} className="text-mint" />
                 </div>
                 <span className="text-[13px] font-medium text-white/55 leading-[1.7]">
                   Bankstown, NSW 2200, Australia
@@ -153,7 +154,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center shrink-0">
-                  <Phone size={14} strokeWidth={1.8} className="text-[#6ac7ed]" />
+                  <Phone size={14} strokeWidth={1.8} className="text-sky" />
                 </div>
                 <a
                   href="tel:+61"
@@ -164,7 +165,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center shrink-0">
-                  <Mail size={14} strokeWidth={1.8} className="text-[#efc759]" />
+                  <Mail size={14} strokeWidth={1.8} className="text-gold" />
                 </div>
                 <a
                   href="mailto:info@nswpm.com.au"
@@ -184,9 +185,9 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="flex-1 bg-white/8 border border-white/10 text-white text-[13px] font-medium placeholder:text-white/30 px-4 py-3 rounded-xl outline-none focus:border-[#74c6b4]/50 transition-colors"
+                  className="flex-1 bg-white/8 border border-white/10 text-white text-[13px] font-medium placeholder:text-white/30 px-4 py-3 rounded-xl outline-none focus:border-mint/50 transition-colors"
                 />
-                <button className="bg-[#efc759] text-[#013877] px-4 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity shrink-0">
+                <button className="bg-gold text-brand px-4 py-3 rounded-xl font-bold hover:opacity-90 transition-opacity shrink-0">
                   <ArrowRight size={16} strokeWidth={2.5} />
                 </button>
               </div>

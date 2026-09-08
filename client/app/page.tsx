@@ -1,16 +1,27 @@
-import Image from "next/image";
-import Hero from "./components/heroSection";
-import AboutSection from "./components/AboutSection";
-import CTABanner from "./components/CTAbanner";
-import CoursesSection from "./components/CoursesSection";
+import {
+  ActTitle,
+  ActReveal,
+  ActPromise,
+} from "./components/home/HomeOpening";
+import {
+  StorySteps,
+  CourseGallery,
+  OrganisationsBand,
+  HomeCTA,
+} from "./components/home/HomeSections";
+import TestimonialsSection from "./components/TestimonialsSection";
+
 export default function Home() {
   return (
-    <div>
-    
-      <Hero />
-      <AboutSection />
-      <CTABanner />
-      <CoursesSection />
-    </div>
+    <>
+      <ActTitle />
+      <ActReveal />
+      <ActPromise />
+      <StorySteps />
+      <CourseGallery />
+      <OrganisationsBand />
+      <TestimonialsSection />
+      <HomeCTA />
+    </>
   );
 }
