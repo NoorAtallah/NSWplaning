@@ -13,7 +13,7 @@ import {
   useMotionValueEvent,
   useReducedMotion,
 } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Clock, Layers, Award } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { courses } from "../../data/courses";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -68,7 +68,7 @@ const subjects = [
   {
     word: "Disability",
     line: "Support work that meets the NDIS standard.",
-    img: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1400&q=85",
+    img: "https://images.unsplash.com/photo-1543333995-a78aea2eee50?w=1400&q=85",
   },
   {
     word: "Aged care",
@@ -76,13 +76,18 @@ const subjects = [
     img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=85",
   },
   {
-    word: "Compliance",
-    line: "Stay audit-ready, all year round.",
-    img: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=1400&q=85",
+    word: "Healthcare",
+    line: "Build knowledge. Support better care.",
+    img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1400&q=85",
   },
   {
-    word: "Development",
-    line: "CPD that keeps your practice current.",
+    word: "Compliance",
+    line: "Stay audit-ready, all year round.",
+    img: "https://images.unsplash.com/photo-1711097383282-28097ae16b1d?w=1400&q=85",
+  },
+  {
+    word: "Vocational Development",
+    line: "Build skills for your working future.",
     img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1400&q=85",
   },
 ];
@@ -121,7 +126,7 @@ export function ActSubjects() {
   }
 
   return (
-    <section ref={ref} className="relative h-[420vh] bg-ice">
+    <section ref={ref} className="relative h-[520vh] bg-ice">
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* photograph — right half */}
         <div className="absolute inset-y-0 right-0 w-full lg:w-[52%]">
@@ -207,11 +212,15 @@ export function ActCourseList() {
     <section className="bg-white py-24 lg:py-32">
       <div className={SHELL}>
         <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
-          <div>
+          <div className="max-w-2xl">
             <Eyebrow>The catalogue</Eyebrow>
-            <h2 className="font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.02] tracking-[-0.045em] text-brand mt-6 max-w-[16ch]">
-              Six programs. One place to start.
+            <h2 className="font-serif text-[clamp(2rem,5vw,3.6rem)] leading-[1.02] tracking-[-0.045em] text-brand mt-6 max-w-[22ch]">
+              Six categories. Explore learning across different disciplines.
             </h2>
+            <p className="text-[15px] lg:text-[16px] font-medium text-brand/60 leading-[1.9] max-w-lg mt-7">
+              Discover a range of courses within each category, designed to
+              support your knowledge, practical skills and professional growth.
+            </p>
           </div>
           <Link
             href="/courses"
@@ -265,21 +274,14 @@ export function ActCourseList() {
                         transition={{ duration: 0.4, ease: EASE }}
                         className="overflow-hidden"
                       >
-                        <div className="flex flex-wrap items-center gap-5 pt-4 text-[12px] font-semibold text-brand/50">
-                          <span className="flex items-center gap-1.5">
-                            <Clock size={13} strokeWidth={2} />
-                            {c.duration}
-                          </span>
-                          <span className="flex items-center gap-1.5">
-                            <Layers size={13} strokeWidth={2} />
-                            {c.modules} modules
-                          </span>
-                          <span className="flex items-center gap-1.5">
-                            <Award size={13} strokeWidth={2} />
-                            {c.cpdHours}h CPD
-                          </span>
+                        <div className="pt-4">
+                          <p className="text-[14px] font-medium text-brand/55 leading-[1.8] max-w-lg">
+                            {c.desc}
+                          </p>
                           {!available && (
-                            <span className="text-brand/35">Coming soon</span>
+                            <span className="inline-block text-[12px] font-semibold text-brand/35 mt-3">
+                              Coming soon
+                            </span>
                           )}
                         </div>
                       </motion.div>
@@ -354,8 +356,8 @@ const path = [
   },
   {
     n: "03",
-    title: "Evidence your development",
-    desc: "Finish with a certificate and a clear record of hours for an employer or auditor.",
+    title: "Showcase your learning",
+    desc: "Receive a certificate of completion when you successfully complete your course, a record of your learning to add to your portfolio or share with employers.",
     img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=85",
   },
 ];

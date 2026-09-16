@@ -46,10 +46,10 @@ export const courses: Course[] = [
   {
     code: "NDI",
     slug: "ndis-disability-sector-training",
-    title: "NDIS & Disability Sector Training",
-    desc: "Core knowledge for support workers and coordinators operating within the NDIS framework.",
+    title: "NDIS & Disability",
+    desc: "Build knowledge and skills to support safe, respectful and person-centred disability services.",
     image:
-      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=80",
+      "https://images.unsplash.com/photo-1543333995-a78aea2eee50?w=800&q=80",
     status: "Available",
     category: "NDIS",
     icon: HeartHandshake,
@@ -59,25 +59,10 @@ export const courses: Course[] = [
     level: "Beginner",
   },
   {
-    code: "VOC",
-    slug: "vocational-skills-foundation-training",
-    title: "Vocational Skills & Foundation Training",
-    desc: "Build the foundational skills needed to thrive in care and community services roles.",
-    image:
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
-    status: "Available",
-    category: "Business",
-    icon: GraduationCap,
-    duration: "8 weeks",
-    modules: 10,
-    cpdHours: 16,
-    level: "Beginner",
-  },
-  {
     code: "HSE",
     slug: "health-safety-compliance",
-    title: "Health & Safety Compliance",
-    desc: "Stay compliant with the health and safety standards essential to working safely in care environments.",
+    title: "Health & Safety",
+    desc: "Explore practical approaches to safer workplaces, risk awareness and everyday wellbeing.",
     image:
       "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80",
     status: "Available",
@@ -91,8 +76,8 @@ export const courses: Course[] = [
   {
     code: "HCP",
     slug: "healthcare-professional-development",
-    title: "Healthcare Professional Development",
-    desc: "Advanced courses for healthcare professionals looking to upskill and specialise.",
+    title: "Healthcare",
+    desc: "Expand your healthcare knowledge to support professional growth and better care.",
     image:
       "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80",
     status: "Coming Soon",
@@ -104,10 +89,25 @@ export const courses: Course[] = [
     level: "Advanced",
   },
   {
+    code: "VOC",
+    slug: "vocational-skills-foundation-training",
+    title: "Vocational Development",
+    desc: "Strengthen foundation skills and build confidence for work and further learning.",
+    image:
+      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+    status: "Available",
+    category: "Business",
+    icon: GraduationCap,
+    duration: "8 weeks",
+    modules: 10,
+    cpdHours: 16,
+    level: "Beginner",
+  },
+  {
     code: "ISO",
     slug: "quality-standards-compliance",
-    title: "Quality & Standards Compliance",
-    desc: "Standards-aligned training for organisations meeting quality management obligations.",
+    title: "Quality & ISO Standards",
+    desc: "Develop your understanding of quality systems, ISO standards and continuous improvement.",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
     status: "Coming Soon",
@@ -121,8 +121,8 @@ export const courses: Course[] = [
   {
     code: "BHF",
     slug: "business-health-financial-management",
-    title: "Business Health & Financial Management",
-    desc: "Tools and frameworks to run a financially healthy care or disability business.",
+    title: "Business & Financial Management",
+    desc: "Build practical knowledge to improve business operations, financial understanding and decision-making.",
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
     status: "Coming Soon",

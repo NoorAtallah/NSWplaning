@@ -185,11 +185,19 @@ export function HeroStatement() {
           transition={{ duration: 1, delay: 0.75, ease: EASE }}
           className="flex flex-col sm:flex-row sm:items-end gap-8 sm:gap-14 mt-14 max-w-4xl"
         >
-          <p className="text-[16px] lg:text-[18px] font-medium text-brand/70 leading-[1.8] max-w-md">
-            We train the people who do it — nationally recognised courses and
-            CPD for the NDIS, disability, aged care and community services
-            workforce.
-          </p>
+          <div className="flex flex-col gap-5 max-w-md">
+            <p className="text-[16px] lg:text-[18px] font-medium text-brand/70 leading-[1.8]">
+              Explore self-paced online courses that bring together practical
+              knowledge and interactive digital learning to support your
+              professional growth across a range of industries and subject
+              areas.
+            </p>
+            <p className="text-[15px] lg:text-[16px] font-medium text-brand/60 leading-[1.8]">
+              Learn through videos, real-world scenarios and interactive
+              activities, and receive a certificate of completion upon
+              successful course completion.
+            </p>
+          </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
