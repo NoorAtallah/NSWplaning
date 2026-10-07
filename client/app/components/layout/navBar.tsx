@@ -11,7 +11,7 @@ const LEARNER_PORTAL_URL = "#";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Courses", href: "/courses" }, // TODO: page not built yet
+  { label: "Courses", href: "/courses" },
   { label: "For Organisations", href: "/organisations" }, // TODO: page not built yet
   { label: "Contact", href: "/contact" },
 ];

@@ -15,7 +15,7 @@ const services = [
 const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Courses", href: "/courses" }, // TODO: page not built yet
+  { label: "Courses", href: "/courses" },
   { label: "For Organisations", href: "/organisations" }, // TODO: page not built yet
   { label: "Learner Portal", href: "#" }, // TODO: eSkilled LMS URL
   { label: "Contact", href: "/contact" },
